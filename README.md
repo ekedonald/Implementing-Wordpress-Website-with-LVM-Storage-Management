@@ -13,4 +13,20 @@ Generally, web or mobile solutions are implemented based on **Three-Tier Archite
 ## How To Implement a Wordpress Website with LVM Storage Management
 The following steps are taken to implement a Wordpress Website with LVM Storage Management:
 
+### Step 1: Provision a Web Server EC2 Instance
 
+### Step 2: Create and Attach 3 Elastic Block Store Volumes to the Web Server EC2 Instance
+
+### Step 3: Implement LVM Storage Management on the Web Server
+
+### Step 4: Install Wordpress on the Web Server
+
+### Step 5: Provision a Database Server EC2 Instance
+
+### Step 6: Create and Attach 3 Elastic Block Store Volumes to the Database EC2 Instance
+
+### Step 7: Install MySQL on the Database Server
+
+### Step 8: Configure the Database Server to work with Wordpress
+
+### Step 9: Configure Wordpress to connect to the remote Database Server
