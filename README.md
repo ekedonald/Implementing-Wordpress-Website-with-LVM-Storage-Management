@@ -14,8 +14,40 @@ Generally, web or mobile solutions are implemented based on **Three-Tier Archite
 The following steps are taken to implement a Wordpress Website with LVM Storage Management:
 
 ### Step 1: Provision a Web Server EC2 Instance
+Use the following parameters when configuring the EC2 Instance:
+
+Name of Instance: Web Server
+AMI: Red Hat Enterprise Linux 9 (HVM), SSD Volume Type
+New Key Pair Name: web11
+Key Pair Type: RSA
+Private Key File Format: .pem
+New Security Group: WordPress
+Inbound Rules: Allow Traffic From Anywhere On Port 80 and Port 22.
+
+* On the Instances tab, you will see the Availabilty Zone. This will be used when creating Elastic Block Volumes for the Web Server Instance.
 
 ### Step 2: Create and Attach 3 Elastic Block Store Volumes to the Web Server EC2 Instance
+
+* On the EC2 dashboard, click on **Volumes** on the Elastic Block Store tab.
+
+* Click on the **Create volume** button.
+
+* Give the EBS Volume the following parameters:
+
+Size (GiB): 10
+Availability Zone: us-east-1d (_Note that the Availabiltiy Zone you select must match the Availability zone of the Web Server Instance_)
+
+* Click on the create volume button.
+
+* Repeat the steps above to create two more EBS Volumes.
+
+* You will see the 3 EBS Volumes you created have an **Available** Volume state.
+
+* Click on one of the Volumes then click on the Actions button, you will see a drop down and click on the Attach volume option.
+
+* Select the Web Server Instance and click on the Attach volume button.
+
+* Repeat these steps for the other 2 volumes and you will see that the volumes have been attached to the Web Server Instance as shown below:
 
 ### Step 3: Implement LVM Storage Management on the Web Server
 
@@ -23,10 +55,11 @@ The following steps are taken to implement a Wordpress Website with LVM Storage 
 
 ### Step 5: Provision a Database Server EC2 Instance
 
+
 ### Step 6: Create and Attach 3 Elastic Block Store Volumes to the Database EC2 Instance
 
 ### Step 7: Install MySQL on the Database Server
 
-### Step 8: Configure the Database Server to work with Wordpress
+### Step 8: Configure the Database Server to work with WordPress
 
 ### Step 9: Configure Wordpress to connect to the remote Database Server
