@@ -24,7 +24,7 @@ Use the following parameters when configuring the EC2 Instance:
 6. New Security Group: WordPress
 7. Inbound Rules: Allow Traffic From Anywhere On Port 80 and Port 22.
 
-* On the Instances tab, you will see the Availabilty Zone. This will be used when creating Elastic Block Volumes for the Web Server Instance.
+* On the Instances tab, you will see the Availabilty Zone (_i.e. us-east-1d_). This will be used when creating Elastic Block Volumes for the Web Server Instance.
 
 ### Step 2: Create and Attach 3 Elastic Block Store Volumes to the Web Server EC2 Instance
 
@@ -62,7 +62,7 @@ Use the following parameters when configuring the EC2 Instance:
 4. New Security Group: WordPress
 5. Inbound Rules: Allow Traffic From Anywhere On Port 22 and Traffic from the Private IPv4 address of the Web Server.
 
-* On the Instances tab, you will see the Availabilty Zone. This will be used when creating Elastic Block Volumes for the Web Server Instance.
+* On the Instances tab, you will see the Availabilty Zone (_i.e us-east-1c_). This will be used when creating Elastic Block Volumes for the Web Server Instance.
 
 ### Step 6: Create and Attach 3 Elastic Block Store Volumes to the Database Server EC2 Instance
 
