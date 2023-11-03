@@ -54,9 +54,19 @@ Availability Zone: us-east-1d (_Note that the Availabiltiy Zone you select must 
 ### Step 4: Install Wordpress on the Web Server
 
 ### Step 5: Provision a Database Server EC2 Instance
+Use the following parameters when configuring the EC2 Instance:
 
+Name of Instance: Database Server
+AMI: Red Hat Enterprise Linux 9 (HVM), SSD Volume Type
+Key Pair Name: web11
+New Security Group: WordPress
+Inbound Rules: Allow Traffic From Anywhere On Port 22 and Traffic from the Private IPv4 address of the Web Server.
 
-### Step 6: Create and Attach 3 Elastic Block Store Volumes to the Database EC2 Instance
+* On the Instances tab, you will see the Availabilty Zone. This will be used when creating Elastic Block Volumes for the Web Server Instance.
+
+### Step 6: Create and Attach 3 Elastic Block Store Volumes to the Database Server EC2 Instance
+
+* Repeat Step 3 but attach the Volumes to the Database Server and ensure the volumes are attached to the Availability Zone (_i.e. us-east-1c_) of the Database Server.
 
 ### Step 7: Install MySQL on the Database Server
 
