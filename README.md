@@ -16,13 +16,13 @@ The following steps are taken to implement a Wordpress Website with LVM Storage 
 ### Step 1: Provision a Web Server EC2 Instance
 Use the following parameters when configuring the EC2 Instance:
 
-Name of Instance: Web Server
-AMI: Red Hat Enterprise Linux 9 (HVM), SSD Volume Type
-New Key Pair Name: web11
-Key Pair Type: RSA
-Private Key File Format: .pem
-New Security Group: WordPress
-Inbound Rules: Allow Traffic From Anywhere On Port 80 and Port 22.
+1. Name of Instance: Web Server
+2. AMI: Red Hat Enterprise Linux 9 (HVM), SSD Volume Type
+3. New Key Pair Name: web11
+4. Key Pair Type: RSA
+5. Private Key File Format: .pem
+6. New Security Group: WordPress
+7. Inbound Rules: Allow Traffic From Anywhere On Port 80 and Port 22.
 
 * On the Instances tab, you will see the Availabilty Zone. This will be used when creating Elastic Block Volumes for the Web Server Instance.
 
@@ -34,8 +34,8 @@ Inbound Rules: Allow Traffic From Anywhere On Port 80 and Port 22.
 
 * Give the EBS Volume the following parameters:
 
-Size (GiB): 10
-Availability Zone: us-east-1d (_Note that the Availabiltiy Zone you select must match the Availability zone of the Web Server Instance_)
+1. Size (GiB): 10
+2. Availability Zone: us-east-1d (_Note that the Availabiltiy Zone you select must match the Availability zone of the Web Server Instance_)
 
 * Click on the create volume button.
 
@@ -56,11 +56,11 @@ Availability Zone: us-east-1d (_Note that the Availabiltiy Zone you select must 
 ### Step 5: Provision a Database Server EC2 Instance
 Use the following parameters when configuring the EC2 Instance:
 
-Name of Instance: Database Server
-AMI: Red Hat Enterprise Linux 9 (HVM), SSD Volume Type
-Key Pair Name: web11
-New Security Group: WordPress
-Inbound Rules: Allow Traffic From Anywhere On Port 22 and Traffic from the Private IPv4 address of the Web Server.
+1. Name of Instance: Database Server
+2. AMI: Red Hat Enterprise Linux 9 (HVM), SSD Volume Type
+3. Key Pair Name: web11
+4. New Security Group: WordPress
+5. Inbound Rules: Allow Traffic From Anywhere On Port 22 and Traffic from the Private IPv4 address of the Web Server.
 
 * On the Instances tab, you will see the Availabilty Zone. This will be used when creating Elastic Block Volumes for the Web Server Instance.
 
