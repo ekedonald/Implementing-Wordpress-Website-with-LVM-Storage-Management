@@ -50,6 +50,50 @@ Use the following parameters when configuring the EC2 Instance:
 * Repeat these steps for the other 2 volumes and you will see that the volumes have been attached to the Web Server Instance as shown below:
 
 ### Step 3: Implement LVM Storage Management on the Web Server
+* Open terminal on your computer.
+* Go to the Downloads directory (i.e `.pem` key pair is stored here) using the command shown below:
+
+```sh
+cd Downloads
+```
+* Run the following command to give read permissions to the `.pem` key pair file.
+
+```sh
+chmod 400 <private-key-pair-name>.pem
+```
+* SSH into the Web Server Instance using the command shown below:
+
+```sh
+ssh -i <private-key-name>.pem ubuntu@<Public-IP-address>
+```
+* Use the `lsblk` command to inspect what block devices are attached to the server.
+
+_Notice the names of the new created devices. All devices in Linux reside in the **/dev** directory._
+
+* Use the `df -h` command to see all mounts and free space on your server.
+
+* Use `gdisk` utility to create a single partiton on **/dev/xvdf** disk.
+
+```sh
+sudo gdisk /dev/xvdf
+```
+
+* Type `n` to create a new partition and fill in the data shown below into the parameters:
+
+ 1. Partiton number (1-128, default 1): 1
+ 2. First sector (34-20971486, default = 2048) or {+-}size{KMGTP}: 2048
+ 3. Last sector (2048-20971486, default = 20971486) or {+-}size{KMGTP}: 20971486
+ 4. Current type is 8300 (Linux filesystem)
+ Hex code or GUID (l to show codes, Enter = 8300): 8300
+
+* Type `p`to print the partition table of the /dev/xvdf device.
+
+* Type `w` to write the table to disk and type `y` to exit.
+
+* Reapeat the `gdisk` utility partitioning steps for **/dev/xvdg** and **/dev/xvdh** disks.
+
+
+
 
 ### Step 4: Install Wordpress on the Web Server
 
