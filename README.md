@@ -90,9 +90,31 @@ sudo gdisk /dev/xvdf
 
 * Type `w` to write the table to disk and type `y` to exit.
 
-* Reapeat the `gdisk` utility partitioning steps for **/dev/xvdg** and **/dev/xvdh** disks.
+* Repeat the `gdisk` utility partitioning steps for **/dev/xvdg** and **/dev/xvdh** disks.
 
+* Use the `lsblk` command to view the newly configured partiton on each of the 3 disks.
 
+* Install `lvm2` package using the command shown below:
+
+```sh
+sudo yum install lvm2 -y
+```
+
+* Run the following command to check for available partitons:
+
+```sh
+sudo lvmdiskscan
+```
+
+* Use `pvcreate` utility to mark each of the 3 disks as physical volumes (PVs) to be used by LVM.
+
+```sh
+sudo pvcreate /dev/xvdf1
+sudo pvcreate /dev/xvdg1
+sudo pvcreate /dev/xvdh1
+```
+
+* 
 
 
 ### Step 4: Install Wordpress on the Web Server
