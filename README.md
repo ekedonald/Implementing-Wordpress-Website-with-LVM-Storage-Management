@@ -258,8 +258,13 @@ sudo cp wordpress/wp-config-sample.php wordpress/wp-config.php
 sudo cp -R wordpress /var/www/html/
 ```
 
+* Configure SELinux policies.
 
-
+```sh
+ sudo chown -R apache:apache /var/www/html/wordpress
+ sudo chcon -t httpd_sys_rw_content_t /var/www/html/wordpress -R
+ sudo setsebool -P httpd_can_network_connect=1
+```
 
 ### Step 5: Provision a Database Server EC2 Instance
 Use the following parameters when configuring the EC2 Instance:
@@ -277,6 +282,37 @@ Use the following parameters when configuring the EC2 Instance:
 * Repeat Step 3 but attach the Volumes to the Database Server and ensure the volumes are attached to the Availability Zone (_i.e. us-east-1c_) of the Database Server.
 
 ### Step 7: Install MySQL on the Database Server
+
+* Update the list of packages in the package manager.
+
+```sh
+sudo yum update -y
+```
+
+* Install MySQL server.
+
+```sh
+sudo yum install mysql-server -y
+```
+
+* Verify that the service is up and running.
+
+```sh
+sudo systemctl status mysqld
+```
+
+* Enable the MySQL service.
+
+```sh
+sudo systemctl enable mysqld
+```
+
+* Restart the MySQL service.
+
+```sh
+sudo systemctl restart mysqld
+```
+
 
 ### Step 8: Configure the Database Server to work with WordPress
 
