@@ -114,7 +114,17 @@ sudo pvcreate /dev/xvdg1
 sudo pvcreate /dev/xvdh1
 ```
 
-* 
+* Verify that your physical volumes (PVs) have been created successfully by running `sudo pvs`
+
+* Use `vgcreate` utility to add 3 physical volumes (PVs) to a volume group (VG). Name the volume group **webdata-vg**.
+
+```sh
+sudo vgcreate webdata-vg /dev/xvdf1 /dev/xvdg1 /dev/xvdh1
+```
+
+* Verify that your volume group (VG) has been created successfully by running `sudo vgs`
+
+* Use `lvcreate` utility to create 2 logical volumes: **apps-lv (use half of the PV size)** and **logs-lv (use the remaining space of the PV size)**. _Note that **apps-lv** will be used to store data for the website while **logs-lv** will be used to store data for logs._
 
 
 ### Step 4: Install Wordpress on the Web Server
