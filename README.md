@@ -191,8 +191,19 @@ sudo blkid
 
 * Update `/etc/fstab` in this format using your own UUID and remember to remove the leading and ending quotes.
 
+* Test the configuration using the command shown below:
 
+```sh
+sudo mount -a
+```
 
+* Reload the daemon using the command shown below:
+
+```sh
+sudo systemctl daemon-reload
+```
+
+* Verify your setup by running `df -h`.
 
 ### Step 4: Install Wordpress on the Web Server
 
