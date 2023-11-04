@@ -313,6 +313,36 @@ sudo systemctl enable mysqld
 sudo systemctl restart mysqld
 ```
 
+* Log ino the MySQL console application.
+
+```sh
+sudo mysql
+```
+
+* Create a database called **wordpress**.
+
+```sh
+CREATE DATABASE wordpress;
+```
+
+* Create a new user.
+
+```sh
+CREATE USER 'myuser'@'<web_server_private_ip_address>' IDENTIFIED BY 'mypass';
+```
+
+* Grant all privileges on the wordpress database to the user you created.
+
+```sh
+GRANT ALL ON wordpress.* TO 'myuser'@'<web_server_private_ip_address>';
+```
+
+* Run the following command to apply and make changes effective.
+
+```sh
+FLUSH PRIVILEGES;
+```
+
 
 ### Step 8: Configure the Database Server to work with WordPress
 
