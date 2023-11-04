@@ -1,5 +1,7 @@
 # Implementing a Wordpress Website with LVM Storage Management
+
 ## Understanding Three-Tier Architecture
+
 A **Three-Tier Architecture** is a client-server architecture model that separates an application into three interconnected but distinct layers, each responsible for specific aspects of the application's functionality. 
 
 Generally, web or mobile solutions are implemented based on **Three-Tier Architecture** to improve scalability and flexibility. The three distinct layers are:
@@ -11,9 +13,11 @@ Generally, web or mobile solutions are implemented based on **Three-Tier Archite
 **3. Data Access or Management Layer (DAL)**: This is the layer for computer data storage and data access (_i.e. Database Server or File System Server such as FTP Server or NFS Server_).
 
 ## How To Implement a Wordpress Website with LVM Storage Management
+
 The following steps are taken to implement a Wordpress Website with LVM Storage Management:
 
 ### Step 1: Provision a Web Server EC2 Instance
+
 Use the following parameters when configuring the EC2 Instance:
 
 1. Name of Instance: Web Server
@@ -50,6 +54,7 @@ Use the following parameters when configuring the EC2 Instance:
 * Repeat these steps for the other 2 volumes and you will see that the volumes have been attached to the Web Server Instance as shown below:
 
 ### Step 3: Implement LVM Storage Management on the Web Server
+
 * Open terminal on your computer.
 * Go to the Downloads directory (i.e `.pem` key pair is stored here) using the command shown below:
 
