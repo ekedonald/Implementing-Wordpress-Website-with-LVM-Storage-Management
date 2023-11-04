@@ -12,6 +12,16 @@ Generally, web or mobile solutions are implemented based on **Three-Tier Archite
 
 **3. Data Access or Management Layer (DAL)**: This is the layer for computer data storage and data access (_i.e. Database Server or File System Server such as FTP Server or NFS Server_).
 
+## What is Logical Volume Manager (LVM)?
+LVM stands for Logical Volume Manager, a technology used in Linux and other Unix-like operating systems to manage storage devices and create flexible, resizable storage configurations. LVM provides a layer of abstraction between the physical storage devices (_such as hard drives, SSDs, or partitions_) and the file systems or logical volumes used by the operating system.
+
+Key components of LVM include:
+**1. Physical Volumes (PVs)**: These are the physical storage devices or partitions (_i.e. hard drives or SSDs_) that are added to the LVM system.
+
+**2. Volume Groups (VGs)**: Volume Groups are created by combining one or more Physical Volumes. VGs serve as a pool of storage that can be allocated to various Logical Volumes.
+
+**3. Logical Volumes (LVs)**: Logical Volumes are similar to traditional partitions and are created within a Volume Group. They are what you format with a file system and use to store data. Logical Volumes can be resized and moved dynamically, which is a significant advantage of LVM.
+
 ## How To Implement a Wordpress Website with LVM Storage Management
 
 The following steps are taken to implement a Wordpress Website with LVM Storage Management:
