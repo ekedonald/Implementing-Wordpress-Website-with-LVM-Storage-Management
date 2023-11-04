@@ -4,7 +4,7 @@
 
 A **Three-Tier Architecture** is a client-server architecture model that separates an application into three interconnected but distinct layers, each responsible for specific aspects of the application's functionality. 
 
-Generally, web or mobile solutions are implemented based on **Three-Tier Architecture** to improve scalability and flexibility. The three distinct layers are:
+Generally, web or mobile solutions are implemented based on a **Three-Tier Architecture** to improve scalability and flexibility. The three distinct layers are:
 
 **1. Presentation Layer (PL)**: This is the user interface such as the client server or browser on your laptop.
 
@@ -22,9 +22,9 @@ Key components of LVM include:
 
 **3. Logical Volumes (LVs)**: Logical Volumes are similar to traditional partitions and are created within a Volume Group. They are what you format with a file system and use to store data. Logical Volumes can be resized and moved dynamically, which is a significant advantage of LVM.
 
-## How To Implement a Wordpress Website with LVM Storage Management
+## How To Implement a WordPress Website with LVM Storage Management
 
-The following steps are taken to implement a Wordpress Website with LVM Storage Management:
+The following steps are taken to implement a WordPress Website with LVM Storage Management:
 
 ### Step 1: Provision a Web Server EC2 Instance
 
@@ -40,7 +40,7 @@ Use the following parameters when configuring the EC2 Instance:
 
 _Instance Summary for Web Server_
 
-* On the Instances tab, you will see the Availabilty Zone (_i.e. us-east-1d_). This will be used when creating Elastic Block Volumes for the Web Server Instance.
+* On the Instances tab, you will see the Availability Zone (_i.e. us-east-1d_). This will be used when creating Elastic Block Volumes for the Web Server Instance.
 
 ### Step 2: Create and Attach 3 Elastic Block Store Volumes to the Web Server EC2 Instance
 
@@ -51,13 +51,13 @@ _Instance Summary for Web Server_
 * Give the EBS Volume the following parameters and click on the **create volume** button:
 
 1. Size (GiB): 10
-2. Availability Zone: us-east-1d (_Note that the Availabiltiy Zone you select must match the Availability zone of the Web Server Instance_)
+2. Availability Zone: us-east-1d (_Note that the Availability Zone you select must match the Availability zone of the Web Server Instance_)
 
 * Repeat the steps above to create two more EBS Volumes.
 
 * You will see the 3 EBS Volumes you created have an **Available** Volume state.
 
-* Click on one of the Volumes then click on the **Actions** button, you will see a drop down and click on the **Attach volume** option.
+* Click on one of the Volumes then click on the **Actions** button, you will see a drop-down and click on the **Attach volume** option.
 
 * Select the Web Server Instance and click on the Attach volume button.
 
@@ -72,6 +72,7 @@ _Instance Summary for Web Server_
 ```sh
 cd Downloads
 ```
+
 * Run the following command to give read permissions to the `.pem` key pair file.
 
 ```sh
@@ -82,13 +83,14 @@ chmod 400 <private-key-pair-name>.pem
 ```sh
 ssh -i <private-key-name>.pem ubuntu@<Public-IP-address>
 ```
+
 * Use the `lsblk` command to inspect what block devices are attached to the server.
 
-_Notice the names of the new created devices. All devices in Linux reside in the **/dev** directory._
+_Notice the names of the newly created devices. All devices in Linux reside in the **/dev** directory._
 
 * Use the `df -h` command to see all mounts and free space on your server.
 
-* Use `gdisk` utility to create a single partiton on **/dev/xvdf** disk.
+* Use `gdisk` utility to create a single partition on **/dev/xvdf** disk.
 
 ```sh
 sudo gdisk /dev/xvdf
@@ -96,7 +98,7 @@ sudo gdisk /dev/xvdf
 
 * Type `n` to create a new partition and fill in the data shown below into the parameters:
 
- 1. Partiton number (1-128, default 1): 1
+ 1. Partition number (1-128, default 1): 1
  2. First sector (34-20971486, default = 2048) or {+-}size{KMGTP}: 2048
  3. Last sector (2048-20971486, default = 20971486) or {+-}size{KMGTP}: 20971486
  4. Current type is 8300 (Linux filesystem)
@@ -108,7 +110,7 @@ sudo gdisk /dev/xvdf
 
 * Repeat the `gdisk` utility partitioning steps for **/dev/xvdg** and **/dev/xvdh** disks.
 
-* Use the `lsblk` command to view the newly configured partiton on each of the 3 disks.
+* Use the `lsblk` command to view the newly configured partition on each of the 3 disks.
 
 * Install `lvm2` package using the command shown below:
 
@@ -221,7 +223,7 @@ sudo systemctl daemon-reload
 
 * Verify your setup by running `df -h`.
 
-### Step 4: Install Wordpress on the Web Server
+### Step 4: Install WordPress on the Web Server
 
 * Update the list of packages in the package manager.
 
@@ -229,7 +231,7 @@ sudo systemctl daemon-reload
 sudo yum -y update
 ```
 
-* Install wget, apache and it's dependencies.
+* Install wget, apache and its dependencies.
 
 ```sh
 sudo yum -y install wget httpd php php-mysqlnd php-fpm php-json
@@ -245,7 +247,7 @@ sudo systemctl enable httpd
 sudo systemctl start httpd
 ```
 
-* Install PHP and it's dependencies.
+* Install PHP and its dependencies.
 
 ```sh
 sudo yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
@@ -292,19 +294,31 @@ Use the following parameters when configuring the EC2 Instance:
 2. AMI: Red Hat Enterprise Linux 9 (HVM), SSD Volume Type
 3. Key Pair Name: web11
 4. New Security Group: WordPress
-5. Inbound Rules: Allow Traffic From Anywhere On Port 22 and Traffic from the Private IPv4 address of the Web Server on Port 3306 (_i.e MySQL_).
+5. Inbound Rules: Allow Traffic From Anywhere On Port 22 and Traffic from the Private IPv4 address of the Web Server on Port 3306 (_i.e. MySQL_).
 
 _Instance Summary for Database Server_
-
-* On the Instances tab, you will see the Availabilty Zone (_i.e us-east-1c_). This will be used when creating Elastic Block Volumes for the Web Server Instance.
-
-_The EBS Volumes have been attached to the Database Server_
 
 ### Step 6: Create and Attach 3 Elastic Block Store Volumes to the Database Server EC2 Instance
 
 * Repeat Step 3 but attach the Volumes to the Database Server and ensure the volumes are attached to the Availability Zone (_i.e. us-east-1c_) of the Database Server.
 
+_The EBS Volumes have been attached to the Database Server_
+
 ### Step 7: Install MySQL on the Database Server
+
+* Open another terminal on your computer.
+
+* Go to the Downloads directory (i.e `.pem` key pair is stored here) using the command shown below:
+
+```sh
+cd Downloads
+```
+
+* SSH into the Database Server Instance using the command shown below:
+
+```sh
+ssh -i <private-key-name>.pem ubuntu@<Public-IP-address>
+```
 
 * Update the list of packages in the package manager.
 
@@ -338,7 +352,7 @@ sudo systemctl restart mysqld
 
 ### Step 8: Configure the Database Server to work with WordPress
 
-* Log ino the MySQL console application.
+* Log into the MySQL console application.
 
 ```sh
 sudo mysql
@@ -402,7 +416,7 @@ sudo vi /var/www/html/wordpress/wp-config.php
 
 _The highlighted parameters are the ones that need to be comfigured_
 
-* Input the credientials of the user you created when configuring the Databse Server then save and exit the file.
+* Input the credentials of the user you created when configuring the Database Server then save and exit the file.
 
 * Try to access the URL shown below from your browser:
 
