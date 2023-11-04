@@ -318,6 +318,8 @@ sudo systemctl enable mysqld
 sudo systemctl restart mysqld
 ```
 
+### Step 8: Configure the Database Server to work with WordPress
+
 * Log ino the MySQL console application.
 
 ```sh
@@ -356,6 +358,34 @@ SHOW DATABASES;
 
 * Exit the MySQL console.
 
-### Step 8: Configure the Database Server to work with WordPress
+### Step 9: Configure WordPress to connect to the remote Database Server
 
-### Step 9: Configure Wordpress to connect to the remote Database Server
+* Connect to the Web Server Instance.
+
+* Install MySQL client.
+
+```sh
+sudo yum install mysql -y
+```
+
+* Test that you can connect from your Web Server to your Database Server by using `mysql-client`
+
+```sh
+sudo mysql -u admin -p -h <Database_Server_Private_IP_address>
+```
+
+* Verify if you can successfully execute `SHOW DATABAES;` command to see a list of existing databases.
+
+* Run the following command to configure WordPress to establish connection with the Database Server.
+
+```sh
+sudo vi /var/www/html/wordpress/wp-config.php
+```
+
+* Input the credientials of the user you created when configuring the Databse Server then save and exit the file.
+
+* Try to access the URL shown below from your browser:
+
+```sh
+http://<Web_Server_Public_IP_Address>/wordpress/
+```
