@@ -17,11 +17,11 @@ LVM stands for Logical Volume Manager, a technology used in Linux and other Unix
 
 Key components of LVM include:
 
-**1. Physical Volumes (PVs)**: These are the physical storage devices or partitions (_i.e. hard drives or SSDs_) that are added to the LVM system.
+1. **Physical Volumes (PVs)**: These are the physical storage devices or partitions (_i.e. hard drives or SSDs_) that are added to the LVM system.
 
-**2. Volume Groups (VGs)**: Volume Groups are created by combining one or more Physical Volumes. VGs serve as a pool of storage that can be allocated to various Logical Volumes.
+2. **Volume Groups (VGs)**: Volume Groups are created by combining one or more Physical Volumes. VGs serve as a pool of storage that can be allocated to various Logical Volumes.
 
-**3. Logical Volumes (LVs)**: Logical Volumes are similar to traditional partitions and are created within a Volume Group. They are what you format with a file system and use to store data. Logical Volumes can be resized and moved dynamically, which is a significant advantage of LVM.
+3. **Logical Volumes (LVs)**: Logical Volumes are similar to traditional partitions and are created within a Volume Group. They are what you format with a file system and use to store data. Logical Volumes can be resized and moved dynamically, which is a significant advantage of LVM.
 
 ## How To Implement a WordPress Website with LVM Storage Management
 
