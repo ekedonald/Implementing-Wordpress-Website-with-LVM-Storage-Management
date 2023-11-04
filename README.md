@@ -36,18 +36,16 @@ Use the following parameters when configuring the EC2 Instance:
 
 * Click on the **Create volume** button.
 
-* Give the EBS Volume the following parameters:
+* Give the EBS Volume the following parameters and click on the **create volume** button:
 
 1. Size (GiB): 10
 2. Availability Zone: us-east-1d (_Note that the Availabiltiy Zone you select must match the Availability zone of the Web Server Instance_)
-
-* Click on the create volume button.
 
 * Repeat the steps above to create two more EBS Volumes.
 
 * You will see the 3 EBS Volumes you created have an **Available** Volume state.
 
-* Click on one of the Volumes then click on the Actions button, you will see a drop down and click on the Attach volume option.
+* Click on one of the Volumes then click on the **Actions** button, you will see a drop down and click on the **Attach volume** option.
 
 * Select the Web Server Instance and click on the Attach volume button.
 
@@ -279,7 +277,7 @@ Use the following parameters when configuring the EC2 Instance:
 2. AMI: Red Hat Enterprise Linux 9 (HVM), SSD Volume Type
 3. Key Pair Name: web11
 4. New Security Group: WordPress
-5. Inbound Rules: Allow Traffic From Anywhere On Port 22 and Traffic from the Private IPv4 address of the Web Server.
+5. Inbound Rules: Allow Traffic From Anywhere On Port 22 and Traffic from the Private IPv4 address of the Web Server on Port 3306 (_i.e MySQL_).
 
 * On the Instances tab, you will see the Availabilty Zone (_i.e us-east-1c_). This will be used when creating Elastic Block Volumes for the Web Server Instance.
 
