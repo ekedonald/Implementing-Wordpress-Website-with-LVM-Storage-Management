@@ -237,6 +237,9 @@ sudo yum -y install wget httpd php php-mysqlnd php-fpm php-json
 
 ```sh
 sudo systemctl enable httpd
+```
+
+```sh
 sudo systemctl start httpd
 ```
 
