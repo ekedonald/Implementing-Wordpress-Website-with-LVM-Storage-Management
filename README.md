@@ -343,6 +343,13 @@ GRANT ALL ON wordpress.* TO 'myuser'@'<web_server_private_ip_address>';
 FLUSH PRIVILEGES;
 ```
 
+* Display all the databases.
+
+```sh
+SHOW DATABASES;
+```
+
+* Exit the MySQL console.
 
 ### Step 8: Configure the Database Server to work with WordPress
 
