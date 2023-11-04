@@ -171,7 +171,7 @@ sudo mount /dev/webdata-vg/apps-lv /var/www/html/
 sudo rsync -av /var/log/. /home/recovery/logs/
 ```
 
-* Mount **/var/log** on **logs-lv** logical volume. (_Note that all the existing data on **/var/log** will be deleted._)
+* Mount **/var/log** on **logs-lv** logical volume. (_Note that all the existing data on **/var/log** will be deleted_).
 
 ```sh
 sudo mount /dev/webdata-vg/logs-lv /var/log
