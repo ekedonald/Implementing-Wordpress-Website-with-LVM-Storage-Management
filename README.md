@@ -126,6 +126,73 @@ sudo vgcreate webdata-vg /dev/xvdf1 /dev/xvdg1 /dev/xvdh1
 
 * Use `lvcreate` utility to create 2 logical volumes: **apps-lv (use half of the PV size)** and **logs-lv (use the remaining space of the PV size)**. _Note that **apps-lv** will be used to store data for the website while **logs-lv** will be used to store data for logs._
 
+```sh
+sudo lvcreate -n apps-lv -L 14G webdata-vg
+sudo lvcreate -n logs-lv -L 14G webdata-vg
+```
+
+* Verify that your logical volume (LV) has been created successfully by running `sudo lvs`
+
+* Verify the entire setup
+
+```sh
+sudo vgdisplay -v #view complete setup - VG, PV, and LV
+sudo lsblk 
+```
+
+* Use `mkfs.ext4` to format the logical volumes (LV) with **ext4** file system.
+
+```sh
+sudo mkfs -t ext4 /dev/webdata-vg/apps-lv
+sudo mkfs -t ext4 /dev/webdata-vg/logs-lv
+```
+
+* Create **/var/www/html** directory to store website files.
+
+```sh
+sudo mkdir -p /var/www/html
+```
+
+* Create **/home/recovery/logs** to store backup of log data.
+
+```sh
+sudo mkdir -p /home/recovery/logs
+```
+
+* Mount **/var/www/html** on **apps-lv** logical volume.
+
+```sh
+sudo mount /dev/webdata-vg/apps-lv /var/www/html/
+```
+
+* Use `rsync` utility to backup all the files in the log directory **/var/log** into **/home/recovery/logs** (_This is required before mounting the file system._)
+
+```sh
+sudo rsync -av /var/log/. /home/recovery/logs/
+```
+
+* Mount **/var/log** on **logs-lv** logical volume. (_Note that all the existing data on **/var/log** will be deleted._)
+
+```sh
+sudo mount /dev/webdata-vg/logs-lv /var/log
+```
+
+* Restore log files back into **/var/log** directory.
+
+```sh
+sudo rsync -av /home/recovery/logs/ /var/log
+```
+
+* Update `/etc/fstab` file so that the mount configuration will persist after restarting the server. The UUID of the device will be used to update the `/etc/fstab` file. Run the command shown below to get the UUID of the **apps-lv** and **logs-lv** logical volumes:
+
+```sh
+sudo blkid
+```
+
+* Update `/etc/fstab` in this format using your own UUID and remember to remove the leading and ending quotes.
+
+
+
 
 ### Step 4: Install Wordpress on the Web Server
 
