@@ -292,6 +292,8 @@ Use the following parameters when configuring the EC2 Instance:
 4. New Security Group: WordPress
 5. Inbound Rules: Allow Traffic From Anywhere On Port 22 and Traffic from the Private IPv4 address of the Web Server on Port 3306 (_i.e MySQL_).
 
+_Instance Summary for Database Server_
+
 * On the Instances tab, you will see the Availabilty Zone (_i.e us-east-1c_). This will be used when creating Elastic Block Volumes for the Web Server Instance.
 
 _The EBS Volumes have been attached to the Database Server_
