@@ -283,7 +283,7 @@ Use the following parameters when configuring the EC2 Instance:
 
 * On the Instances tab, you will see the Availabilty Zone (_i.e us-east-1c_). This will be used when creating Elastic Block Volumes for the Web Server Instance.
 
-_The EBS Volumes have attached to the Database Server_
+_The EBS Volumes have been attached to the Database Server_
 
 ### Step 6: Create and Attach 3 Elastic Block Store Volumes to the Database Server EC2 Instance
 
