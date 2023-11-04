@@ -56,6 +56,7 @@ Use the following parameters when configuring the EC2 Instance:
 ### Step 3: Implement LVM Storage Management on the Web Server
 
 * Open terminal on your computer.
+
 * Go to the Downloads directory (i.e `.pem` key pair is stored here) using the command shown below:
 
 ```sh
@@ -381,6 +382,8 @@ sudo mysql -u admin -p -h <Database_Server_Private_IP_address>
 ```sh
 sudo vi /var/www/html/wordpress/wp-config.php
 ```
+
+_The highlighted parameters are the ones that need to be comfigured_
 
 * Input the credientials of the user you created when configuring the Databse Server then save and exit the file.
 
