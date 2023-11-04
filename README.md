@@ -10,7 +10,7 @@ Generally, web or mobile solutions are implemented based on a **Three-Tier Archi
 
 2. **Business Layer (BL)**: This is the backend program that implements business logic (_i.e. Application or Web Server_).
 
-3. **3Data Access or Management Layer (DAL)**: This is the layer for computer data storage and data access (_i.e. Database Server or File System Server such as FTP Server or NFS Server_).
+3. **Data Access or Management Layer (DAL)**: This is the layer for computer data storage and data access (_i.e. Database Server or File System Server such as FTP Server or NFS Server_).
 
 ## What is Logical Volume Manager (LVM)?
 LVM stands for Logical Volume Manager, a technology used in Linux and other Unix-like operating systems to manage storage devices and create flexible, resizable storage configurations. LVM provides a layer of abstraction between the physical storage devices (_such as hard drives, SSDs, or partitions_) and the file systems or logical volumes used by the operating system.
