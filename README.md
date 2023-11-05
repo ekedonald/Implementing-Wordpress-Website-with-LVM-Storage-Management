@@ -552,7 +552,7 @@ sudo vi /var/www/html/wordpress/wp-config.php
 ```
 
 ![vi wp-config.php](./images/9.%20vi%20:var:www:html:wordpress:wp-config.png)
-_The highlighted parameters are the ones that need to be comfigured_
+_The highlighted parameters are the ones that need to be configured_
 
 * Input the credentials of the user you created when configuring the Database Server then save and exit the file.
 
