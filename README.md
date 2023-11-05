@@ -93,6 +93,9 @@ cd Downloads
 ```sh
 chmod 400 <private-key-pair-name>.pem
 ```
+
+![chmod web11](./images/3.%20chmod%20web11.png)
+
 * SSH into the Web Server Instance using the command shown below:
 
 ```sh
