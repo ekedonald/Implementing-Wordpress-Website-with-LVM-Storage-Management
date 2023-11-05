@@ -2,7 +2,9 @@
 
 ## Understanding Three-Tier Architecture
 
-A **Three-Tier Architecture** is a client-server architecture model that separates an application into three interconnected but distinct layers, each responsible for specific aspects of the application's functionality. 
+A **Three-Tier Architecture** is a client-server architecture model that separates an application into three interconnected but distinct layers, each responsible for specific aspects of the application's functionality.
+
+![3-Tier Architecture](./images/3%20Tier%20Architecture.png)
 
 Generally, web or mobile solutions are implemented based on a **Three-Tier Architecture** to improve scalability and flexibility. The three distinct layers are:
 
