@@ -307,7 +307,7 @@ sudo systemctl daemon-reload
 
 ![systemctl daemon-reload](./images/3.%20systemctl%20daemon-reload.png)
 
-* Verify your setup by running `df -h`.
+* Verify your setup by running `df -h`
 
 ![df -h](./images/3.%20df-h2.png)
 
