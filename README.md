@@ -54,6 +54,8 @@ _Instance Summary for Web Server_
 
 * Click on the **Create volume** button.
 
+![create volume](./images/create%20volume.png)
+
 * Give the EBS Volume the following parameters and click on the **create volume** button:
 
 1. Size (GiB): 10
