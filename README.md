@@ -315,21 +315,29 @@ sudo systemctl daemon-reload
 sudo yum -y update
 ```
 
+![yum update](./images/4.%20yum%20update.png)
+
 * Install wget, apache and its dependencies.
 
 ```sh
 sudo yum -y install wget httpd php php-mysqlnd php-fpm php-json
 ```
 
-* Start apache
+![install wget httpd php](./images/4.%20install%20wget%20httpd%20php.png)
+
+* Enable and start apache
 
 ```sh
 sudo systemctl enable httpd
 ```
 
+![enable httpd](./images/4.%20systemctl%20enable%20httpd.png)
+
 ```sh
 sudo systemctl start httpd
 ```
+
+![start apache](./images/4.%20systemctl%20start%20httpd.png)
 
 * Install PHP and its dependencies.
 
@@ -345,11 +353,15 @@ sudo systemctl enable php-fpm
 sudo setsebool -P httpd_execmem 1
 ```
 
+![install php dependencies](./images/4.%20install%20php%20dependencies.png)
+
 * Restart apache.
 
 ```sh
 sudo systemctl restart httpd
 ```
+
+![restart apache](./images/4.%20restart%20apache.png)
 
 * Download WordPress and copy WordPress to `/var/www/html`
 
@@ -363,6 +375,8 @@ sudo cp wordpress/wp-config-sample.php wordpress/wp-config.php
 sudo cp -R wordpress /var/www/html/
 ```
 
+![download wordpress](./images/3.%20download%20wordpress.png)
+
 * Configure SELinux policies.
 
 ```sh
@@ -370,6 +384,8 @@ sudo cp -R wordpress /var/www/html/
  sudo chcon -t httpd_sys_rw_content_t /var/www/html/wordpress -R
  sudo setsebool -P httpd_can_network_connect=1
 ```
+
+![selinux policies](./images/4.%20selinux%20policies.png)
 
 ### Step 5: Provision a Database Server EC2 Instance
 Use the following parameters when configuring the EC2 Instance:
