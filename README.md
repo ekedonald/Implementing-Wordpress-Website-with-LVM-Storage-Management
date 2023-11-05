@@ -1,4 +1,4 @@
-# Implementing a Wordpress Website with LVM Storage Management
+# Implementing a WordPress Website with LVM Storage Management
 
 ## Understanding Three-Tier Architecture
 
