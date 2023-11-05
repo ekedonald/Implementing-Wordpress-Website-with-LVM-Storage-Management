@@ -107,7 +107,7 @@ ssh -i <private-key-name>.pem ubuntu@<Public-IP-address>
 * Use the `lsblk` command to inspect what block devices are attached to the server.
 
 ![lsblk](./images/3.%20lsblk1.png)
-_Notice the names of the newly created devices. All devices in Linux reside in the **/dev** directory._
+_Notice the names of the newly created devices._
 
 * Use the `df -h` command to see all mounts and free space on your server.
 
@@ -116,6 +116,7 @@ _Notice the names of the newly created devices. All devices in Linux reside in t
 * Use `gdisk` utility to create a single partition on **/dev/xvdf** disk.
 
 ![gdisk dev/xvdf](./images/3.%20gdisk%20:dev:xvdf.png)
+_Note that all devices in Linux reside in the **/dev** directory._
 
 ```sh
 sudo gdisk /dev/xvdf
