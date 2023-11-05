@@ -471,11 +471,15 @@ sudo systemctl restart mysqld
 sudo mysql
 ```
 
+![sudo mysql](./images/8.%20sudo%20mysql.png)
+
 * Create a database called **wordpress**.
 
 ```sh
 CREATE DATABASE wordpress;
 ```
+
+![create database](./images/8.%20create%20database%20wordpress.png)
 
 * Create a new user.
 
@@ -483,11 +487,15 @@ CREATE DATABASE wordpress;
 CREATE USER 'myuser'@'<web_server_private_ip_address>' IDENTIFIED BY 'mypass';
 ```
 
+![create user](./images/8.%20create%20user.png)
+
 * Grant all privileges on the wordpress database to the user you created.
 
 ```sh
 GRANT ALL ON wordpress.* TO 'myuser'@'<web_server_private_ip_address>';
 ```
+
+![grant all privileges](./images/8.%20grant%20all%20on%20wordpress.png)
 
 * Run the following command to apply and make changes effective.
 
@@ -495,13 +503,19 @@ GRANT ALL ON wordpress.* TO 'myuser'@'<web_server_private_ip_address>';
 FLUSH PRIVILEGES;
 ```
 
+![flush privileges](./images/8.%20flush%20privileges.png)
+
 * Display all the databases.
 
 ```sh
 SHOW DATABASES;
 ```
 
+![show databases](./images/8.%20show%20databases.png)
+
 * Exit the MySQL console.
+
+![exit mysql](./images/8.%20mysql%20exit.png)
 
 ### Step 9: Configure WordPress to connect to the remote Database Server
 
@@ -513,13 +527,19 @@ SHOW DATABASES;
 sudo yum install mysql -y
 ```
 
+![install mysql client](./images/9.%20install%20mysql%20client.png)
+
 * Test that you can connect from your Web Server to your Database Server by using `mysql-client`
 
 ```sh
 sudo mysql -u admin -p -h <Database_Server_Private_IP_address>
 ```
 
+![mysql -u admin -p -h database private ip](./images/9.%20mysql%20-u%20admin%20-p%20-h.png)
+
 * Verify if you can successfully execute `SHOW DATABAES;` command to see a list of existing databases.
+
+![show databases](./images/9.%20show%20databases.png)
 
 * Run the following command to configure WordPress to establish connection with the Database Server.
 
@@ -527,12 +547,25 @@ sudo mysql -u admin -p -h <Database_Server_Private_IP_address>
 sudo vi /var/www/html/wordpress/wp-config.php
 ```
 
+![vi wp-config.php](./images/9.%20vi%20:var:www:html:wordpress:wp-config.png)
 _The highlighted parameters are the ones that need to be comfigured_
 
 * Input the credentials of the user you created when configuring the Database Server then save and exit the file.
+
+![update wp-config.php](./images/9.%20update%20wp-config.png)
 
 * Try to access the URL shown below from your browser:
 
 ```sh
 http://<Web_Server_Public_IP_Address>/wordpress/
 ```
+
+![url1](./images/9.%20wordpress%20url1.png)
+
+![url2](./images/9.%20wordpress%20url2.png)
+
+![url3](./images/9.%20wordpress%20url3.png)
+
+![url4](./images/9.%20wordpress%20url4.png)
+
+![url5](./images/9.%20wordpress%20url5.png)
