@@ -39,13 +39,18 @@ Use the following parameters when configuring the EC2 Instance:
 6. New Security Group: WordPress
 7. Inbound Rules: Allow Traffic From Anywhere On Port 80 and Port 22.
 
+![web server instance summary](./images/1.%20instance%20summary%20web%20server.png)
 _Instance Summary for Web Server_
 
 * On the Instances tab, you will see the Availability Zone (_i.e. us-east-1d_). This will be used when creating Elastic Block Volumes for the Web Server Instance.
 
+![web server availability zone](./images/1.%20availability%20zone%20web%20server.png)
+
 ### Step 2: Create and Attach 3 Elastic Block Store Volumes to the Web Server EC2 Instance
 
 * On the EC2 dashboard, click on **Volumes** on the Elastic Block Store tab.
+
+![ebs volumes](./images/2.%20volumes.png)
 
 * Click on the **Create volume** button.
 
@@ -54,11 +59,16 @@ _Instance Summary for Web Server_
 1. Size (GiB): 10
 2. Availability Zone: us-east-1d (_Note that the Availability Zone you select must match the Availability zone of the Web Server Instance_)
 
+![ebs parameters](./images/2.%20ebs%20volume%20parameters.png)
+
 * Repeat the steps above to create two more EBS Volumes.
 
-* You will see the 3 EBS Volumes you created have an **Available** Volume state.
+![available ebs volumes](./images/2.%20ebs%20volume%20available.png)
+_You will see the 3 EBS Volumes you created have an **Available** Volume state_
 
 * Click on one of the Volumes then click on the **Actions** button, you will see a drop-down and click on the **Attach volume** option.
+
+![attach volume](./images/2.%20actions%20and%20attach%20volume.png)
 
 * Select the Web Server Instance and click on the Attach volume button.
 
