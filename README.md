@@ -396,12 +396,14 @@ Use the following parameters when configuring the EC2 Instance:
 4. New Security Group: WordPress
 5. Inbound Rules: Allow Traffic From Anywhere On Port 22 and Traffic from the Private IPv4 address of the Web Server on Port 3306 (_i.e. MySQL_).
 
+![instance summary for database server](./images/5.%20instance%20summary%20database%20server.png)
 _Instance Summary for Database Server_
 
 ### Step 6: Create and Attach 3 Elastic Block Store Volumes to the Database Server EC2 Instance
 
 * Repeat Step 3 but attach the Volumes to the Database Server and ensure the volumes are attached to the Availability Zone (_i.e. us-east-1c_) of the Database Server.
 
+![ebs volumes attached to database server](./images/6.%20attached%20ebs%20volumes%20to%20database%20server.png)
 _The EBS Volumes have been attached to the Database Server_
 
 ### Step 7: Install MySQL on the Database Server
@@ -419,6 +421,7 @@ cd Downloads
 ```sh
 ssh -i <private-key-name>.pem ubuntu@<Public-IP-address>
 ```
+![ssh database](./images/7.%20ssh%20database%20server.png)
 
 * Update the list of packages in the package manager.
 
@@ -426,11 +429,15 @@ ssh -i <private-key-name>.pem ubuntu@<Public-IP-address>
 sudo yum update -y
 ```
 
+![yum update](./images/7.%20yum%20update.png)
+
 * Install MySQL server.
 
 ```sh
 sudo yum install mysql-server -y
 ```
+
+![install mysql-server](./images/7.%20install%20mysql-server.png)
 
 * Verify that the service is up and running.
 
@@ -438,17 +445,23 @@ sudo yum install mysql-server -y
 sudo systemctl status mysqld
 ```
 
+![status mysqld](./images/7.%20status%20mysqld.png)
+
 * Enable the MySQL service.
 
 ```sh
 sudo systemctl enable mysqld
 ```
 
+![enable mysqld](./images/7.%20enable%20mysqld.png)
+
 * Restart the MySQL service.
 
 ```sh
 sudo systemctl restart mysqld
 ```
+
+![restart mysqld](./images/7.%20restart%20mysqld.png)
 
 ### Step 8: Configure the Database Server to work with WordPress
 
