@@ -401,7 +401,7 @@ _Instance Summary for Database Server_
 
 ### Step 6: Create and Attach 3 Elastic Block Store Volumes to the Database Server EC2 Instance
 
-* Repeat Step 3 but attach the Volumes to the Database Server and ensure the volumes are attached to the Availability Zone (_i.e. us-east-1c_) of the Database Server.
+* Repeat Step 3 but attach the Volumes to the Database Server and ensure the volumes are attached to the **Availability Zone (_i.e. us-east-1c_)** of the Database Server.
 
 ![ebs volumes attached to database server](./images/6.%20attached%20ebs%20volumes%20to%20database%20server.png)
 _The EBS Volumes have been attached to the Database Server_
