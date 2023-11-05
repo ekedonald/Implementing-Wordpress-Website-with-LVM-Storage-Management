@@ -82,7 +82,7 @@ _You will see the 3 EBS Volumes you created have an Available Volume state_
 
 * Open terminal on your computer.
 
-* Go to the Downloads directory (i.e `.pem` key pair is stored here) using the command shown below:
+* Go to the Downloads directory (_i.e. `.pem` key pair is stored here_) using the command shown below:
 
 ```sh
 cd Downloads
@@ -104,7 +104,7 @@ ssh -i <private-key-name>.pem ubuntu@<Public-IP-address>
 
 ![ssh web server](./images/3.%20ssh%20web%20server.png)
 
-* Use the `lsblk` command to inspect what block devices are attached to the server.
+* Use the `lsblk` command to inspect the block devices attached to the server.
 
 ![lsblk](./images/3.%20lsblk1.png)
 _Notice the names of the newly created devices._
@@ -414,7 +414,7 @@ _The EBS Volumes have been attached to the Database Server_
 
 * Open another terminal on your computer.
 
-* Go to the Downloads directory (i.e `.pem` key pair is stored here) using the command shown below:
+* Go to the Downloads directory (_i.e. `.pem` key pair is stored here_) using the command shown below:
 
 ```sh
 cd Downloads
