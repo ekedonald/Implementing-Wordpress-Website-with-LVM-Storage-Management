@@ -252,7 +252,7 @@ sudo mount /dev/webdata-vg/apps-lv /var/www/html/
 
 ![mount apps-lv /var/www/html](./images/3.%20mount%20:dev:webdata-vg:logs-lv%20:var:log.png)
 
-* Use `rsync` utility to backup all the files in the log directory **/var/log** into **/home/recovery/logs** (_This is required before mounting the file system._)
+* Use `rsync` utility to backup all the files in the log directory **/var/log** into **/home/recovery/logs** (_This is required before mounting the file system_).
 
 ```sh
 sudo rsync -av /var/log/. /home/recovery/logs/
