@@ -64,7 +64,7 @@ _Instance Summary for Web Server_
 * Repeat the steps above to create two more EBS Volumes.
 
 ![available ebs volumes](./images/2.%20ebs%20volume%20available.png)
-_You will see the 3 EBS Volumes you created have an **Available** Volume state_
+_You will see the 3 EBS Volumes you created have an Available Volume state_
 
 * Click on one of the Volumes then click on the **Actions** button, you will see a drop-down and click on the **Attach volume** option.
 
