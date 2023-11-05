@@ -72,7 +72,11 @@ _You will see the 3 EBS Volumes you created have an **Available** Volume state_
 
 * Select the Web Server Instance and click on the Attach volume button.
 
+![select web server instance](./images/2.%20select%20web%20server%20instance%20attach%20volume.png)
+
 * Repeat these steps for the other 2 volumes and you will see that the volumes have been attached to the Web Server Instance as shown below:
+
+![volumes attached to web server](./images/2.%20volumes%20attached.png)
 
 ### Step 3: Implement LVM Storage Management on the Web Server
 
@@ -95,13 +99,20 @@ chmod 400 <private-key-pair-name>.pem
 ssh -i <private-key-name>.pem ubuntu@<Public-IP-address>
 ```
 
+![ssh web server](./images/3.%20ssh%20web%20server.png)
+
 * Use the `lsblk` command to inspect what block devices are attached to the server.
 
+![lsblk](./images/3.%20lsblk1.png)
 _Notice the names of the newly created devices. All devices in Linux reside in the **/dev** directory._
 
 * Use the `df -h` command to see all mounts and free space on your server.
 
+![df -h](./images/3%20df%20-h1.png)
+
 * Use `gdisk` utility to create a single partition on **/dev/xvdf** disk.
+
+![gdisk dev/xvdf](./images/3.%20gdisk%20:dev:xvdf.png)
 
 ```sh
 sudo gdisk /dev/xvdf
@@ -115,13 +126,21 @@ sudo gdisk /dev/xvdf
  4. Current type is 8300 (Linux filesystem)
  Hex code or GUID (l to show codes, Enter = 8300): 8300
 
+ ![n partition](./images/3.%20n%20partiton.png)
+
 * Type `p`to print the partition table of the /dev/xvdf device.
 
+![p partition](./images/3.%20p%20partition.png)
+
 * Type `w` to write the table to disk and type `y` to exit.
+
+![w y partiton](./images/3.%20w%20y%20partition.png)
 
 * Repeat the `gdisk` utility partitioning steps for **/dev/xvdg** and **/dev/xvdh** disks.
 
 * Use the `lsblk` command to view the newly configured partition on each of the 3 disks.
+
+![lsblk](./images/3.%20lsblk2.png)
 
 * Install `lvm2` package using the command shown below:
 
@@ -129,11 +148,15 @@ sudo gdisk /dev/xvdf
 sudo yum install lvm2 -y
 ```
 
+![install lvm2](./images/3.%20install%20lvm2.png)
+
 * Run the following command to check for available partitons:
 
 ```sh
 sudo lvmdiskscan
 ```
+
+![lvmdiskscan](./images/3.%20lvmdiskscan.png)
 
 * Use `pvcreate` utility to mark each of the 3 disks as physical volumes (PVs) to be used by LVM.
 
@@ -143,7 +166,11 @@ sudo pvcreate /dev/xvdg1
 sudo pvcreate /dev/xvdh1
 ```
 
+![pvcreate](./images/3.%20pvcreate%20:dev:xvdf.png)
+
 * Verify that your physical volumes (PVs) have been created successfully by running `sudo pvs`
+
+![pvs](./images/3.%20pvs.png)
 
 * Use `vgcreate` utility to add 3 physical volumes (PVs) to a volume group (VG). Name the volume group **webdata-vg**.
 
@@ -151,7 +178,11 @@ sudo pvcreate /dev/xvdh1
 sudo vgcreate webdata-vg /dev/xvdf1 /dev/xvdg1 /dev/xvdh1
 ```
 
+![vgcreate](./images/3.%20vgcreate%20webdata-vg.png)
+
 * Verify that your volume group (VG) has been created successfully by running `sudo vgs`
+
+![vgs](./images/3.%20vgs.png)
 
 * Use `lvcreate` utility to create 2 logical volumes: **apps-lv (use half of the PV size)** and **logs-lv (use the remaining space of the PV size)**. _Note that **apps-lv** will be used to store data for the website while **logs-lv** will be used to store data for logs._
 
@@ -160,21 +191,38 @@ sudo lvcreate -n apps-lv -L 14G webdata-vg
 sudo lvcreate -n logs-lv -L 14G webdata-vg
 ```
 
+![lvcreate](./images/3.%20lvcreate.png)
+
 * Verify that your logical volume (LV) has been created successfully by running `sudo lvs`
 
-* Verify the entire setup
+![lvs](./images/3.%20lvs.png)
+
+* Verify the entire setup running the following commands:
 
 ```sh
 sudo vgdisplay -v #view complete setup - VG, PV, and LV
-sudo lsblk 
 ```
+
+![vgdisplay](./images/3.%20vgdisplay.png)
+
+```sh
+sudo lsblk
+```
+
+![lsblk](./images/3.%20lsblk3.png)
 
 * Use `mkfs.ext4` to format the logical volumes (LV) with **ext4** file system.
 
 ```sh
 sudo mkfs -t ext4 /dev/webdata-vg/apps-lv
+```
+![mkfs ext4 apps-lv](./images/3.%20sudo%20mkfs%20-t%20apps-lv.png)
+
+```sh
 sudo mkfs -t ext4 /dev/webdata-vg/logs-lv
 ```
+
+![mkfs ext4 logs-lv](./images/3.%20sudo%20mkfs%20-t%20logs-lv.png)
 
 * Create **/var/www/html** directory to store website files.
 
@@ -182,11 +230,15 @@ sudo mkfs -t ext4 /dev/webdata-vg/logs-lv
 sudo mkdir -p /var/www/html
 ```
 
+![mkdir /var/www/html](./images/3.%20mkdir%20-p%20:var:www:html.png)
+
 * Create **/home/recovery/logs** to store backup of log data.
 
 ```sh
 sudo mkdir -p /home/recovery/logs
 ```
+
+![mkdir /home/recovery/logs](./images/3.%20mkdir%20-p%20:home:recovery:logs.png)
 
 * Mount **/var/www/html** on **apps-lv** logical volume.
 
@@ -194,11 +246,15 @@ sudo mkdir -p /home/recovery/logs
 sudo mount /dev/webdata-vg/apps-lv /var/www/html/
 ```
 
+![mount apps-lv /var/www/html](./images/3.%20mount%20:dev:webdata-vg:logs-lv%20:var:log.png)
+
 * Use `rsync` utility to backup all the files in the log directory **/var/log** into **/home/recovery/logs** (_This is required before mounting the file system._)
 
 ```sh
 sudo rsync -av /var/log/. /home/recovery/logs/
 ```
+
+![rsync var/log home/recovery](./images/3.%20rsync%20-av%20var:log%20home:recovery:log.png)
 
 * Mount **/var/log** on **logs-lv** logical volume. (_Note that all the existing data on **/var/log** will be deleted_).
 
@@ -206,19 +262,30 @@ sudo rsync -av /var/log/. /home/recovery/logs/
 sudo mount /dev/webdata-vg/logs-lv /var/log
 ```
 
+![mount logs-lv var/log](./images/3.%20mount%20:dev:webdata-vg:logs-lv%20:var:log.png)
+
 * Restore log files back into **/var/log** directory.
 
 ```sh
 sudo rsync -av /home/recovery/logs/ /var/log
 ```
 
+![rsync home/recovery /var/log](./images/3.%20rsync%20-av%20:home:recovery:logs%20:var:log.png)
+
 * Update `/etc/fstab` file so that the mount configuration will persist after restarting the server. The UUID of the device will be used to update the `/etc/fstab` file. Run the command shown below to get the UUID of the **apps-lv** and **logs-lv** logical volumes:
 
 ```sh
 sudo blkid
 ```
+![blkid](./images/3.%20sudo%20blkid.png)
 
 * Update `/etc/fstab` in this format using your own UUID and remember to remove the leading and ending quotes.
+
+```sh
+sudo vi /etc/fstab
+```
+
+![/etc/fstab](./images/3.%20vi%20:etc:fstab.png)
 
 * Test the configuration using the command shown below:
 
@@ -226,13 +293,19 @@ sudo blkid
 sudo mount -a
 ```
 
+![mount -a](./images/3.%20mount%20-a.png)
+
 * Reload the daemon using the command shown below:
 
 ```sh
 sudo systemctl daemon-reload
 ```
 
+![systemctl daemon-reload](./images/3.%20systemctl%20daemon-reload.png)
+
 * Verify your setup by running `df -h`.
+
+![df -h](./images/3.%20df-h2.png)
 
 ### Step 4: Install WordPress on the Web Server
 
