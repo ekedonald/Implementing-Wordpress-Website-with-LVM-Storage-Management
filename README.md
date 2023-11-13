@@ -103,7 +103,7 @@ chmod 400 <private-key-pair-name>.pem
 * SSH into the Web Server Instance using the command shown below:
 
 ```sh
-ssh -i <private-key-name>.pem ubuntu@<Public-IP-address>
+ssh -i <private-key-name>.pem ec2-user@<Public-IP-address>
 ```
 
 ![ssh web server](./images/3.%20ssh%20web%20server.png)
@@ -427,7 +427,7 @@ cd Downloads
 * SSH into the Database Server Instance using the command shown below:
 
 ```sh
-ssh -i <private-key-name>.pem ubuntu@<Public-IP-address>
+ssh -i <private-key-name>.pem ec2-user@<Public-IP-address>
 ```
 ![ssh database](./images/7.%20ssh%20database%20server.png)
 
